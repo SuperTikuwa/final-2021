@@ -22,6 +22,10 @@ down:
 run/db:
 	$(DC) up -d db
 
+run/node:
+	@cd backend&&\
+	yarn run/prod
+
 ps:
 	$(DC) ps
 
