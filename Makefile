@@ -16,7 +16,11 @@ init:
 	yarn install
 
 run:
-	$(DC) up -d
+	$(DC) up -d --build
+	cd backend&&yarn start/prod
+
+down:
+	$(DC) down -v
 
 run/db:
 	$(DC) up -d db
@@ -32,3 +36,6 @@ logs:
 
 logs/node:
 	$(DC) logs node
+
+restart:
+	$(DC) restart

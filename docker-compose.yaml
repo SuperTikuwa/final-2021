@@ -11,12 +11,3 @@ services:
       TZ: "Asia/Tokyo"
     ports:
       - "127.0.0.1:33060:3306"
-  node:
-    container_name: "k19092-backend"
-    image: node:16.13-alpine3.12
-    volumes:
-      - "./backend:/app"
-    command: "yarn start/prod"
-    working_dir: "/app"
-    ports:
-      - "3000:3000"
