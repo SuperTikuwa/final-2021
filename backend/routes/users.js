@@ -9,6 +9,24 @@ router.get("/", async (req, res, next) => {
   res.json(users);
 });
 
+router.get("/:id", async (req, res, next) => {
+  let lendings = [];
+  try {
+    lendings = await db.sequelize.query(
+      "select title,b.id from lendings join books b on lendings.book_id = b.id join users u on lendings.user_id = u.id where user_id=$user_id;",
+      {
+        bind: { user_id: req.params.id },
+        type: db.sequelize.QueryTypes.SELECT,
+      }
+    );
+  } catch (e) {
+    console.log(e);
+    res.status(400);
+  }
+
+  res.status(200).json(lendings);
+});
+
 router.post("/", async (req, res, next) => {
   try {
     await db.users.create({ name: req.query.name });

@@ -18,6 +18,9 @@ init:
 run:
 	$(DC) up -d
 
+run/db:
+	$(DC) up -d db
+
 ps:
 	$(DC) ps
 
