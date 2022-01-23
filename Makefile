@@ -15,9 +15,6 @@ init:
 	@cd backend&&\
 	yarn install
 
-run:
-	$(DC) up -d --build
-	cd backend&&yarn start/prod
 
 down:
 	$(DC) down -v
