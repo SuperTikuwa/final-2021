@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "nodemon -e ejs,js,json start ./bin/www",
-    "start/out": "./bin/www"
+    "start/prod": "NODE_ENV=production ./bin/www"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",

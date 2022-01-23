@@ -1,22 +1,22 @@
-version: '3.7'
+version: "3.7"
 services:
   db:
-    container_name: 'k19092-mysql'
+    container_name: "k19092-mysql"
     image: mariadb
     environment:
-      MYSQL_ROOT_PASSWORD: 'my-secret-pw'
-      MYSQL_DATABASE: 'app-db'
+      MYSQL_ROOT_PASSWORD: "my-secret-pw"
+      MYSQL_DATABASE: "app-db"
       MYSQL_USER: docker
       MYSQL_PASSWORD: docker
-      TZ: 'Asia/Tokyo'
+      TZ: "Asia/Tokyo"
     ports:
       - "127.0.0.1:33060:3306"
   node:
-    container_name: 'k19092-backend'
+    container_name: "k19092-backend"
     image: node:16.13-alpine3.12
     volumes:
       - "./backend:/app"
-    command: "yarn start"
+    command: "yarn start/prod"
     working_dir: "/app"
     ports:
       - "127.0.0.1:3000:3000"
