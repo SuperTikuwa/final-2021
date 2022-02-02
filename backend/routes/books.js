@@ -3,6 +3,16 @@ var router = express.Router();
 
 const db = require("../models/index");
 
+router.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+  );
+  next();
+});
+
 router.get("/", async (req, res, next) => {
   const books = await db.sequelize.query(
     // "select books.id,title from books left join lendings l on books.id = l.book_id left join users u on l.user_id = u.id;",

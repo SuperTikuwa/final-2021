@@ -3,6 +3,16 @@ var router = express.Router();
 
 const db = require("../models/index");
 
+router.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+  );
+  next();
+});
+
 router.post("/", async (req, res, next) => {
   try {
     await db.lendings.create({
